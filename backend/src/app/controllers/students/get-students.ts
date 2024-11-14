@@ -1,7 +1,7 @@
 import { RequestHandler, Router } from 'express'
 import { OpenAPIV3 } from 'openapi-types'
 import { getStudentsSchema, GetStudentsRequestQuery } from './schemas/student.schemas'
-import studentsService from '../../services/studentsService'
+import students from '../../services/students'
 
 const docs: OpenAPIV3.PathsObject = {
     '/': {
@@ -91,7 +91,7 @@ const validateQuery: RequestHandler<any, any, any, GetStudentsRequestQuery> = as
 const requestHandler: RequestHandler<any, any, any, GetStudentsRequestQuery> = async (req, res) => {
     const { search, currentPage, pageSize } = req.query
 
-    const result = await studentsService.getStudents(search, currentPage, pageSize)
+    const result = await students.getStudents(search, currentPage, pageSize)
 
     res.status(200).json(result)
 }

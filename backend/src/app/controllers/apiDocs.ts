@@ -3,9 +3,15 @@ import { lstatSync, readdirSync } from 'fs'
 import { OpenAPIV3 } from 'openapi-types'
 import { fetchPathsDocs } from '../services/docsGeneration'
 
-const apiDocs: OpenAPIV3.Document = require(path.join(__dirname, 'apiDocsBase.json'))
-// console.debug('apiDocs:', apiDocs)
-// console.debug('dirname',__dirname)
+const apiDocs: OpenAPIV3.Document = {
+    "openapi": "3.0.0",
+    "info": {
+        "title": "TFI - Backend documentation",
+        "description": "Educational institution dministration system",
+        "version": "1.0.0",
+    },
+    "paths": {}
+}
 
 readdirSync(__dirname)
     .map(name => path.join(__dirname, name))

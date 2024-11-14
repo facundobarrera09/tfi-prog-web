@@ -1,15 +1,14 @@
 import { OpenAPIV3 } from 'openapi-types'
 import { RequestHandler, Router } from 'express'
-import levelsService from '../../services/levelsService'
 
 const docs: OpenAPIV3.PathsObject = {
     "/": {
         "get": {
-            "description": "Fetch all levels",
-            "operationId": "getAllLevels",
+            "description": "Fetch all careers",
+            "operationId": "getAllCareers",
             "responses": {
                 "200": {
-                    "description": "Success fetching all the Levels",
+                    "description": "Success fetching all the Careers",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -23,12 +22,18 @@ const docs: OpenAPIV3.PathsObject = {
                                         },
                                         "name": {
                                             "type": "string",
-                                            "pattern": "/[A-Z0-9][a-z0-9]{1,10}}/",
-                                            "example": "1st year"
+                                            "pattern": "/[A-Z][a-z]{1,50}}/",
+                                            "example": "Information Systems Engineering"
                                         },
-                                        "careerId": {
-                                            "type": "number",
-                                            "example": 4
+                                        "levels": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "example": ["1st year", "2nd year", "3rd year"]
+                                        },
+                                        "accredited": {
+                                            "type": "boolean"
                                         }
                                     }
                                 }
@@ -45,16 +50,17 @@ const docs: OpenAPIV3.PathsObject = {
     }
 }
 
-const getAllLevelsRouter: Router = Router()
+const getAllCarrersRouter: Router = Router()
 
 const requestHandler: RequestHandler = (req, res) => {
-    res.status(200).json(levelsService.findAll().map(level => level.toJson()))
-    return
+    /** @todo implement */
+
+    res.status(404).send()
 }
 
-getAllLevelsRouter.get('/',
+getAllCarrersRouter.get('/',
     requestHandler
 )
 
-export default getAllLevelsRouter
+export default getAllCarrersRouter
 export { docs }

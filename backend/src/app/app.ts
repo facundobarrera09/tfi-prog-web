@@ -26,7 +26,7 @@ app.use(cors({
     origin: function (origin: any, callback: any) {
         callback(null, [
             'http://localhost:3000',
-            'http://172.21.0.52:3000'
+            'http://172.22.0.52:3000'
         ])
     },
     credentials: true

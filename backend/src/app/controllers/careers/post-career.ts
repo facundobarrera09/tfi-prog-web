@@ -1,7 +1,6 @@
 import { RequestHandler, Router } from 'express'
 import { OpenAPIV3 } from 'openapi-types'
 import { createCareerSchema } from './schemas/careers-schemas'
-import careersService from '../../services/careersService'
 
 const docs: OpenAPIV3.PathsObject = {
     '/': {
@@ -58,16 +57,9 @@ const validateBody: RequestHandler = async (req, res, next) => {
 }
 
 const requestHandler: RequestHandler = (req, res) => {
-    const { name, accredited }: {name: string, accredited: boolean} = req.body
+    /** @todo implement */
 
-    const newCareer = careersService.create(name, accredited)
-
-    if (!newCareer) {
-        res.status(400).json({ error: "That career already exists" })
-        return
-    }
-
-    res.status(201).json({ career: newCareer })
+    res.status(404).send()
 }
 
 postCareerRouter.post('/',

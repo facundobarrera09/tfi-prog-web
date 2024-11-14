@@ -1,7 +1,7 @@
 import { RequestHandler, Router } from 'express'
 import { OpenAPIV3 } from 'openapi-types'
 import { createStudentSchema, CreateStudentRequestBody, validNameRegex } from './schemas/student.schemas'
-import studentsService from '../../services/studentsService'
+import students from '../../services/students'
 
 const docs: OpenAPIV3.PathsObject = {
     '/': {
@@ -70,7 +70,7 @@ const validateBody: RequestHandler = async (req, res, next) => {
 const requestHandler: RequestHandler<any, any, CreateStudentRequestBody> = async (req, res) => {
     const { firstname, lastname, dni, email } = req.body
 
-    const newStudent = await studentsService.create(firstname, lastname, dni, email)
+    const newStudent = await students.createStudent(firstname, lastname, dni, email)
 
     if (!newStudent) {
         res.status(400).json({ error: "Student already exists" })

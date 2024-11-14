@@ -1,5 +1,5 @@
 import path from 'path'
-import { lstatSync, PathLike, readdir, readdirSync } from 'fs'
+import { lstatSync, PathLike, readdirSync } from 'fs'
 
 function fetchPathsDocs(pathToFiles: PathLike) {
     let paths: any = {}

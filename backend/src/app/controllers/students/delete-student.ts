@@ -1,6 +1,6 @@
 import { RequestHandler, Router } from 'express'
 import { OpenAPIV3 } from 'openapi-types'
-import studentsService from '../../services/studentsService'
+import students from '../../services/students'
 import { DeleteStudentPath, deleteStudentSchema } from './schemas/student.schemas'
 
 const docs: OpenAPIV3.PathsObject = {
@@ -50,7 +50,7 @@ const validatePath: RequestHandler<DeleteStudentPath> = async (req, res, next) =
 const requestHandler: RequestHandler<DeleteStudentPath> = async (req, res) => {
     const { id } = req.params
 
-    const response = await studentsService.deleteStudent(id)
+    const response = await students.deleteStudent(id)
 
     if (response) {
         res.status(204).send()
