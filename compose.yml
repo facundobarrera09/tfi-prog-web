@@ -1,0 +1,54 @@
+services:
+  frontend:
+    image: node
+    ports:
+      - 3000:3000
+    volumes:
+      - "./frontend:/home/frontend/server"
+    command: tail -F anything
+    networks:
+      static-network:
+        ipv4_address: 172.21.0.52
+
+  backend:
+    image: node
+    ports:
+      - 3001:3001
+    volumes:
+      - "./backend:/home/backend/server"
+    command: tail -F anything
+    networks:
+      static-network:
+        ipv4_address: 172.21.0.51
+
+  database-postgres:
+    image: postgres:16
+    volumes:
+      - "./database:/var/lib/postgresql/data"
+    environment:
+      - "POSTGRES_PASSWORD=password"
+      - "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/16/bin"
+      - "GOSU_VERSION=1.16"
+      - "LANG=en_US.utf8"
+      - "PG_MAJOR=16"
+      - "PG_VERSION=16.0-1.pgdg120+1"
+      - "PGDATA=/var/lib/postgresql/data"
+    networks:
+      static-network:
+        ipv4_address: 172.21.0.50
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 5050:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=email@email.com
+      - PGADMIN_DEFAULT_PASSWORD=password
+    networks:
+      - static-network
+
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16

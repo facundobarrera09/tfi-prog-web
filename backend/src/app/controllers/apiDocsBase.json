@@ -1,0 +1,8 @@
+{
+    "openapi": "3.0.0",
+    "title": "Tarea 3 - Backend",
+    "summary": "Careers administration system",
+    "description": "This is a server for a careers administration system.",
+    "version": "1.0.0",
+    "paths": []
+}

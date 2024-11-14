@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "outDir": "./dist",
+        "resolveJsonModule": true,
+        "typeRoots": ["./node_modules/@types", "./src/**/*.d.ts", "./src/app/models"],
+        "allowImportingTsExtensions": true,
+        "noEmit": true,
+        "target": "ES2020"
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+}

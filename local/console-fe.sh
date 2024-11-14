@@ -1,0 +1,1 @@
+docker exec -it -w /home/frontend/server tp2-prog-web-frontend-1 bash
