@@ -49,11 +49,11 @@ async function findById(id: number) {
 }
 
 async function findByDni(dni: number) {
-    return await prisma.student.findUnique({ where: { dni, deleted: false } })
+    return await prisma.student.findFirst({ where: { dni, deleted: false } })
 }
 
 async function findByEmail(email: string) {
-    return await prisma.student.findUnique({ where: { email, deleted: false } })
+    return await prisma.student.findFirst({ where: { email, deleted: false } })
 }
 
 async function create(firstname: string, lastname: string, dni: bigint, email: string) {
