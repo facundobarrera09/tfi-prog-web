@@ -8,7 +8,7 @@ services:
     command: tail -F anything
     networks:
       static-network:
-        ipv4_address: 172.21.0.52
+        ipv4_address: 172.22.0.52
 
   backend:
     image: node
@@ -19,7 +19,7 @@ services:
     command: tail -F anything
     networks:
       static-network:
-        ipv4_address: 172.21.0.51
+        ipv4_address: 172.22.0.51
 
   database-postgres:
     image: postgres:16
@@ -35,7 +35,7 @@ services:
       - "PGDATA=/var/lib/postgresql/data"
     networks:
       static-network:
-        ipv4_address: 172.21.0.50
+        ipv4_address: 172.22.0.50
 
   pgadmin:
     image: dpage/pgadmin4
@@ -51,4 +51,4 @@ networks:
   static-network:
     ipam:
       config:
-        - subnet: 172.21.0.0/16
+        - subnet: 172.22.0.0/16
