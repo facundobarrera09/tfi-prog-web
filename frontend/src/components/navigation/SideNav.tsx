@@ -28,6 +28,7 @@ const SideNav: React.FC = () => {
             <ol>
                 <SideNavItem title="Página Principal" href="/" />
                 <SideNavItem title="Alumnos" href="/students" />
+                <SideNavItem title="Carreras" href="/careers" />
             </ol>
         </nav>
     )
