@@ -124,9 +124,12 @@ const Home: React.FC = () => {
                     <Cell>{student.firstname}</Cell>
                     <Cell>{student.lastname}</Cell>
                     <Cell>
-                        <Button color="customred" href="#" name="Borrar" 
-                            onClick={() => { setStudentToDelete(student); setShowDeleteStudentPopup(true) }}
-                        />
+                        <div className="flex gap-2">
+                            <Button color="darkturquoise" href={`/students/view/${student.id}`} name="Carreras" />
+                            <Button color="customred" href="#" name="Borrar" 
+                                onClick={() => { setStudentToDelete(student); setShowDeleteStudentPopup(true) }}
+                            />
+                        </div>
                     </Cell>
                 </Row>
             )

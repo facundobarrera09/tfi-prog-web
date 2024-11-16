@@ -1,10 +1,10 @@
 import { RequestHandler, Router } from 'express'
 import { OpenAPIV3 } from 'openapi-types'
 import students from '../../services/students'
-import { DeleteStudentPath, deleteStudentSchema } from './schemas/student.schemas'
+import { StudentInPath, studentInPathSchema } from './schemas/student.schemas'
 
 const docs: OpenAPIV3.PathsObject = {
-    '/': {
+    '/{id}': {
         "delete": {
             "description": "Delete a Student",
             "operationId": "deleteStudents",
@@ -20,7 +20,7 @@ const docs: OpenAPIV3.PathsObject = {
                 }
             ],
             "responses": {
-                "200": {
+                "204": {
                     "description": "Student was succesfully deleted",
                 },
                 "400": {
@@ -34,8 +34,8 @@ const docs: OpenAPIV3.PathsObject = {
 
 const deleteStudentRouter: Router = Router()
 
-const validatePath: RequestHandler<DeleteStudentPath> = async (req, res, next) => {
-    const validationResult = deleteStudentSchema.validate(req.params, { abortEarly: false, stripUnknown: true })
+const validatePath: RequestHandler<StudentInPath> = async (req, res, next) => {
+    const validationResult = studentInPathSchema.validate(req.params, { abortEarly: false, stripUnknown: true })
 
     if (validationResult.error) {
         res.status(400).json(validationResult.error)
@@ -47,7 +47,7 @@ const validatePath: RequestHandler<DeleteStudentPath> = async (req, res, next) =
     next()
 }
 
-const requestHandler: RequestHandler<DeleteStudentPath> = async (req, res) => {
+const requestHandler: RequestHandler<StudentInPath> = async (req, res) => {
     const { id } = req.params
 
     const response = await students.deleteStudent(id)

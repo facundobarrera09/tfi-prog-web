@@ -35,6 +35,10 @@ interface GetStudentsResponse {
     students: Student[]
 }
 
+interface GetStudentResponse {
+    student: Required<Student>
+}
+
 interface CreateStudentBody {
     firstname: string
     lastname: string
@@ -61,7 +65,13 @@ interface Student {
     firstname: string,
     lastname: string,
     email: string,
-    dni: bigint
+    dni: bigint,
+    careers?: StudentHasCareer[]
+}
+
+interface StudentHasCareer {
+    enrolmentDate: Date,
+    career: Pick<Career, 'id' | 'name'>
 }
 
 interface Career {

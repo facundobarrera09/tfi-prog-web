@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosResponse } from "axios"
 import { axiosConfig } from "."
 import handleAxiosError from "./error"
 
-const get = async <Response, Query = {[x:string]: any} | undefined> (url: string, query: Query | undefined): Promise<HTTPResponse<Response> | HTTPError> => {
+const get = async <Response, Query = {[x:string]: any} | undefined> (url: string, query?: Query): Promise<HTTPResponse<Response> | HTTPError> => {
     try {
         const response = await axios.get<Response, AxiosResponse<Response>, Query>(url, {
             ...axiosConfig,

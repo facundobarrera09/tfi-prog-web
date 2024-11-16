@@ -29,11 +29,11 @@ export const getStudentsSchema = Joi.object<GetStudentsRequestQuery>().keys({
     pageSize: Joi.number().min(5).default(5).optional()
 })
 
-export interface DeleteStudentPath {
+export interface StudentInPath {
     [x:string]: string | number 
     id: number
 }
 
-export const deleteStudentSchema = Joi.object<DeleteStudentPath>().keys({
+export const studentInPathSchema = Joi.object<StudentInPath>().keys({
     id: Joi.number().required()
 })
