@@ -6,7 +6,6 @@ import deleteStudentRouter from "./delete-student";
 const studentsRouter = Router()
 
 studentsRouter.use(
-    (req, res, next) => { console.log('studentsRouter'); next() },
     postStudentRouter,
     getStudentsRouter,
     deleteStudentRouter

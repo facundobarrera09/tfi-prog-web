@@ -14,13 +14,52 @@ datasource db {
 }
 
 model Student {
-    id        Int      @id @default(autoincrement()) @db.Integer
-    sid       BigInt   @db.BigInt @unique
-    firstname String   @db.VarChar(100)
-    lastname  String   @db.VarChar(100)
-    dni       BigInt   @db.BigInt
-    email     String   @db.VarChar(100)
-    deleted   Boolean  @default(false) @db.Boolean
+    id        Int                @id @default(autoincrement()) @db.Integer
+    sid       BigInt             @unique @db.BigInt
+    firstname String             @db.VarChar(100)
+    lastname  String             @db.VarChar(100)
+    dni       BigInt             @db.BigInt
+    email     String             @db.VarChar(100)
+    careers   StudentHasCareer[] @relation("StudentHasCareerToStudent")
+    deleted   Boolean            @default(false) @db.Boolean
+    createdAt DateTime           @default(now())
+    updatedAt DateTime           @default(now())
+
+    @@index([id])
+}
+
+model StudentHasCareer {
+    id            Int      @id @default(autoincrement())
+    enrolmentDate DateTime
+    student       Student  @relation("StudentHasCareerToStudent", fields: [studentId], references: [id])
+    career        Career   @relation("StudentHasCareerToCareer", fields: [careerId], references: [id])
+    studentId     Int
+    careerId      Int
+
+    @@index([id])
+}
+
+model Career {
+    id         Int                @id @default(autoincrement())
+    name       String
+    accredited Boolean
+    levels     Level[]            @relation("LevelToCareer")
+    students   StudentHasCareer[] @relation("StudentHasCareerToCareer")
+    deleted    Boolean            @default(false)
+    createdAt  DateTime           @default(now())
+    updatedAt  DateTime           @default(now())
+
+    @@index([id])
+}
+
+model Level {
+    id        Int      @id @default(autoincrement())
+    name      String
+    career    Career   @relation("LevelToCareer", fields: [careerId], references: [id])
+    deleted   Boolean  @default(false)
     createdAt DateTime @default(now())
     updatedAt DateTime @default(now())
+    careerId  Int
+
+    @@index([id])
 }

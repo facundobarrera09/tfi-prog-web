@@ -3,7 +3,7 @@ import httpService from "../http"
 const ENDPOINT = `${process.env.NEXT_PUBLIC_HOST}/students`
 
 const getStudents = async (searchCriteria = "", currentPage = 1, pageSize = 5): Promise<ServiceResponse<GetStudentsResponse> | ServiceError> => {
-    const response = await httpService.get<GetStudentsResponse, GetStudentsQuery>(ENDPOINT, { search: searchCriteria, currentPage, pageSize })
+    const response = await httpService.get<GetStudentsResponse, PaginatedSearchQuery>(ENDPOINT, { search: searchCriteria, currentPage, pageSize })
 
     if (response.success) {
         return {

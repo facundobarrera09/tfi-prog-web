@@ -3,7 +3,6 @@ const prisma = new PrismaClient()
 
 const students = [
     {
-        "id": 1,
         "sid": 1001,
         "firstname": "Sofía",
         "lastname": "García",
@@ -11,7 +10,6 @@ const students = [
         "email": "sofia.garcia@example.com"
     },
     {
-        "id": 2,
         "sid": 1002,
         "firstname": "Mateo",
         "lastname": "Fernández",
@@ -19,7 +17,6 @@ const students = [
         "email": "mateo.fernandez@example.com"
     },
     {
-        "id": 3,
         "sid": 1003,
         "firstname": "Valentina",
         "lastname": "Rodríguez",
@@ -27,7 +24,6 @@ const students = [
         "email": "valentina.rodriguez@example.com"
     },
     {
-        "id": 4,
         "sid": 1004,
         "firstname": "Tomas",
         "lastname": "López",
@@ -35,7 +31,6 @@ const students = [
         "email": "tomas.lopez@example.com"
     },
     {
-        "id": 5,
         "sid": 1005,
         "firstname": "Camila",
         "lastname": "González",
@@ -43,7 +38,6 @@ const students = [
         "email": "camila.gonzalez@example.com"
     },
     {
-        "id": 6,
         "sid": 1006,
         "firstname": "Lucas",
         "lastname": "Martínez",
@@ -51,7 +45,6 @@ const students = [
         "email": "lucas.martinez@example.com"
     },
     {
-        "id": 7,
         "sid": 1007,
         "firstname": "Florencia",
         "lastname": "Pérez",
@@ -59,7 +52,6 @@ const students = [
         "email": "florencia.perez@example.com"
     },
     {
-        "id": 8,
         "sid": 1008,
         "firstname": "Juan",
         "lastname": "Díaz",
@@ -67,7 +59,6 @@ const students = [
         "email": "juan.diaz@example.com"
     },
     {
-        "id": 9,
         "sid": 1009,
         "firstname": "Isabella",
         "lastname": "Müller",
@@ -75,7 +66,6 @@ const students = [
         "email": "isabella.muller@example.com"
     },
     {
-        "id": 10,
         "sid": 1010,
         "firstname": "Diego",
         "lastname": "Cruz",
@@ -83,7 +73,6 @@ const students = [
         "email": "diego.cruz@example.com"
     },
     {
-        "id": 11,
         "sid": 1011,
         "firstname": "Lara",
         "lastname": "Sánchez",
@@ -91,7 +80,6 @@ const students = [
         "email": "lara.sanchez@example.com"
     },
     {
-        "id": 12,
         "sid": 1012,
         "firstname": "Nicolás",
         "lastname": "Ramírez",
@@ -99,7 +87,6 @@ const students = [
         "email": "nicolas.ramirez@example.com"
     },
     {
-        "id": 13,
         "sid": 1013,
         "firstname": "Mía",
         "lastname": "Torres",
@@ -107,7 +94,6 @@ const students = [
         "email": "mia.torres@example.com"
     },
     {
-        "id": 14,
         "sid": 1014,
         "firstname": "Samuel",
         "lastname": "Gutiérrez",
@@ -115,7 +101,6 @@ const students = [
         "email": "samuel.gutierrez@example.com"
     },
     {
-        "id": 15,
         "sid": 1015,
         "firstname": "Emma",
         "lastname": "Bermúdez",
@@ -123,7 +108,6 @@ const students = [
         "email": "emma.bermudez@example.com"
     },
     {
-        "id": 16,
         "sid": 1016,
         "firstname": "Joaquín",
         "lastname": "Salazar",
@@ -131,7 +115,6 @@ const students = [
         "email": "joaquin.salazar@example.com"
     },
     {
-        "id": 17,
         "sid": 1017,
         "firstname": "Santiago",
         "lastname": "Núñez",
@@ -139,7 +122,6 @@ const students = [
         "email": "santiago.nunez@example.com"
     },
     {
-        "id": 18,
         "sid": 1018,
         "firstname": "Valeria",
         "lastname": "Hernández",
@@ -147,7 +129,6 @@ const students = [
         "email": "valeria.hernandez@example.com"
     },
     {
-        "id": 19,
         "sid": 1019,
         "firstname": "Gabriel",
         "lastname": "Mendoza",
@@ -155,7 +136,6 @@ const students = [
         "email": "gabriel.mendoza@example.com"
     },
     {
-        "id": 20,
         "sid": 1020,
         "firstname": "Rocío",
         "lastname": "Vargas",
@@ -163,7 +143,6 @@ const students = [
         "email": "rocio.vargas@example.com"
     },
     {
-        "id": 21,
         "sid": 1021,
         "firstname": "Luca",
         "lastname": "Ríos",
@@ -171,7 +150,6 @@ const students = [
         "email": "luca.rios@example.com"
     },
     {
-        "id": 22,
         "sid": 1022,
         "firstname": "Zoe",
         "lastname": "Sosa",
@@ -179,7 +157,6 @@ const students = [
         "email": "zoe.sosa@example.com"
     },
     {
-        "id": 23,
         "sid": 1023,
         "firstname": "Agustín",
         "lastname": "Gómez",
@@ -187,7 +164,6 @@ const students = [
         "email": "agustin.gomez@example.com"
     },
     {
-        "id": 24,
         "sid": 1024,
         "firstname": "Ariana",
         "lastname": "Jímenez",
@@ -195,7 +171,6 @@ const students = [
         "email": "ariana.jimenez@example.com"
     },
     {
-        "id": 25,
         "sid": 1025,
         "firstname": "Emilio",
         "lastname": "Cano",
@@ -203,7 +178,6 @@ const students = [
         "email": "emilio.cano@example.com"
     },
     {
-        "id": 26,
         "sid": 1026,
         "firstname": "Victoria",
         "lastname": "Salas",
@@ -211,7 +185,6 @@ const students = [
         "email": "victoria.salas@example.com"
     },
     {
-        "id": 27,
         "sid": 1027,
         "firstname": "Matías",
         "lastname": "Ponce",
@@ -219,7 +192,6 @@ const students = [
         "email": "matias.ponce@example.com"
     },
     {
-        "id": 28,
         "sid": 1028,
         "firstname": "Valentín",
         "lastname": "Maldonado",
@@ -227,7 +199,6 @@ const students = [
         "email": "valentin.maldonado@example.com"
     },
     {
-        "id": 29,
         "sid": 1029,
         "firstname": "Milagros",
         "lastname": "Aguirre",
@@ -235,7 +206,6 @@ const students = [
         "email": "milagros.aguirre@example.com"
     },
     {
-        "id": 30,
         "sid": 1030,
         "firstname": "Jazmín",
         "lastname": "Cardozo",
@@ -243,7 +213,6 @@ const students = [
         "email": "jazmin.cardozo@example.com"
     },
     {
-        "id": 31,
         "sid": 1031,
         "firstname": "Benjamín",
         "lastname": "Ortega",
@@ -251,7 +220,6 @@ const students = [
         "email": "benjamin.ortega@example.com"
     },
     {
-        "id": 32,
         "sid": 1032,
         "firstname": "Luciana",
         "lastname": "Barrios",
@@ -259,7 +227,6 @@ const students = [
         "email": "luciana.barrios@example.com"
     },
     {
-        "id": 33,
         "sid": 1033,
         "firstname": "Julián",
         "lastname": "Ramos",
@@ -267,7 +234,6 @@ const students = [
         "email": "julian.ramos@example.com"
     },
     {
-        "id": 34,
         "sid": 1040,
         "firstname": "Cecilia",
         "lastname": "Vega",
@@ -276,14 +242,75 @@ const students = [
     }
 ]
 
+const careers = [
+    { name: "Ingeniería Informática", accredited: true },
+    { name: "Medicina", accredited: true },
+    { name: "Derecho", accredited: true },
+    { name: "Arquitectura", accredited: false },
+    { name: "Psicología", accredited: true },
+    { name: "Biología", accredited: true },
+    { name: "Ingeniería Civil", accredited: true },
+    { name: "Química", accredited: false },
+    { name: "Filosofía", accredited: false },
+    { name: "Veterinaria", accredited: true },
+    { name: "Marketing", accredited: true },
+    { name: "Diseño Gráfico", accredited: false }
+]
 
+const levels: { name: string, careerId: number }[] = []
+
+careers.forEach((c, index) => {
+    const numNiveles = Math.floor(Math.random() * 2) + 4
+  
+    for (let i = 1; i <= numNiveles; i++) {
+        levels.push({ name: `Nivel ${i}`, careerId: index + 1 })
+    }
+});
+
+const studentHasCareer = [
+    { "studentId": 1, "careerId": 8, "enrolmentDate": "2022-05-15T08:30:00Z" },
+    { "studentId": 2, "careerId": 5, "enrolmentDate": "2023-03-10T09:45:00Z" },
+    { "studentId": 3, "careerId": 6, "enrolmentDate": "2022-08-25T14:00:00Z" },
+    { "studentId": 5, "careerId": 1, "enrolmentDate": "2023-07-01T10:20:00Z" },
+    { "studentId": 7, "careerId": 4, "enrolmentDate": "2022-12-12T11:30:00Z" },
+    { "studentId": 8, "careerId": 6, "enrolmentDate": "2023-01-17T13:00:00Z" },
+    { "studentId": 10, "careerId": 3, "enrolmentDate": "2022-09-18T16:30:00Z" },
+    { "studentId": 12, "careerId": 3, "enrolmentDate": "2023-05-22T08:00:00Z" },
+    { "studentId": 13, "careerId": 5, "enrolmentDate": "2023-02-10T07:45:00Z" },
+    { "studentId": 14, "careerId": 10, "enrolmentDate": "2022-11-03T12:15:00Z" },
+    { "studentId": 15, "careerId": 9, "enrolmentDate": "2023-04-20T15:00:00Z" },
+    { "studentId": 17, "careerId": 10, "enrolmentDate": "2022-10-11T10:00:00Z" },
+    { "studentId": 18, "careerId": 8, "enrolmentDate": "2023-06-30T12:30:00Z" },
+    { "studentId": 19, "careerId": 2, "enrolmentDate": "2023-09-07T09:15:00Z" },
+    { "studentId": 21, "careerId": 9, "enrolmentDate": "2022-06-18T14:45:00Z" },
+    { "studentId": 23, "careerId": 7, "enrolmentDate": "2023-01-25T11:00:00Z" },
+    { "studentId": 26, "careerId": 7, "enrolmentDate": "2022-07-15T10:45:00Z" },
+    { "studentId": 29, "careerId": 11, "enrolmentDate": "2022-12-20T08:10:00Z" },
+    { "studentId": 30, "careerId": 4, "enrolmentDate": "2023-08-05T13:25:00Z" },
+    { "studentId": 34, "careerId": 12, "enrolmentDate": "2022-04-08T17:30:00Z" }
+] 
 
 const main = async () => {
     console.log('Starting seeder')
     
-    const result = await prisma.student.createMany({
+    await prisma.student.createMany({
         skipDuplicates: true,
         data: students
+    })
+
+    await prisma.career.createMany({
+        skipDuplicates: true,
+        data: careers
+    })
+
+    await prisma.level.createMany({
+        skipDuplicates: true,
+        data: levels
+    })
+
+    await prisma.studentHasCareer.createMany({
+        skipDuplicates: true,
+        data: studentHasCareer
     })
 
     console.log('Database seeded')

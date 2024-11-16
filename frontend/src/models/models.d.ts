@@ -24,7 +24,7 @@ interface ServiceError<D = any> {
     status?: number
 }
 
-interface GetStudentsQuery {
+interface PaginatedSearchQuery {
     search: string,
     currentPage: number,
     pageSize: number
@@ -46,6 +46,15 @@ interface CreateStudentResponse {
 
 }
 
+interface CreateCareerResponse {
+
+}
+
+interface GetCareersResponse {
+    count: number,
+    careers: Career[]
+}
+
 interface Student {
     id: number,
     sid: bigint,
@@ -53,4 +62,16 @@ interface Student {
     lastname: string,
     email: string,
     dni: bigint
+}
+
+interface Career {
+    id: number,
+    name: string,
+    accredited: boolean,
+    levels: Level[]
+}
+
+interface Level {
+    id: number,
+    name: string
 }

@@ -6,14 +6,14 @@ const handleAxiosError = <E extends AxiosError>(error: E) => {
         // Handle 401, 403, 500
         switch (error.response.status) {
             case 401:
-                console.error('Unauthorized')
+                console.log('Unauthorized')
                 // send user to login
                 break
             case 403:
-                console.error('Forbidden')
+                console.log('Forbidden')
                 // inform lack of permissions to user
             case 404:
-                console.error('Not found')
+                console.log('Not found')
                 notify.error("Ocurrió un error inesperado, contacte con el administrador")
                 break
             case 500:

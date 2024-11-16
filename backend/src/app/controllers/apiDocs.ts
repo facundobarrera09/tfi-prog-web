@@ -10,7 +10,12 @@ const apiDocs: OpenAPIV3.Document = {
         "description": "Educational institution dministration system",
         "version": "1.0.0",
     },
-    "paths": {}
+    "paths": {},
+    "servers": [
+        {
+            url: "http://localhost:3001/api"
+        }
+    ]
 }
 
 readdirSync(__dirname)

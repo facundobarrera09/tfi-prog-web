@@ -3,8 +3,8 @@ import httpService from "../http"
 
 const ENDPOINT = `${process.env.NEXT_PUBLIC_HOST}/students`
 
-const createStudent = async (firstname: string, lastname: string, dni: bigint, email: string): Promise<ServiceResponse<CreateStudentResponse> | ServiceError<{ error: ValidationError | string }>> => {
-    const response = await httpService.post<CreateStudentResponse, CreateStudentBody, { error: ValidationError | string }>(ENDPOINT, { firstname, lastname, dni, email })
+const createStudent = async (firstname: string, lastname: string, dni: bigint, email: string): Promise<ServiceResponse<CreateCareerResponse> | ServiceError<{ error: ValidationError | string }>> => {
+    const response = await httpService.post<CreateCareerResponse, CreateStudentBody, { error: ValidationError | string }>(ENDPOINT, { firstname, lastname, dni, email })
 
     if (response.success) {
         return {

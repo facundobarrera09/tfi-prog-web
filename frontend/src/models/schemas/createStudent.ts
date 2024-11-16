@@ -16,3 +16,4 @@ export const formStudentsSchema = Joi.object<CreateStudentRequestBody>().keys({
     dni: Joi.string().regex(/^\d+$/).max(10).required(),
     email: Joi.string().regex(validEmailRegex).max(100).required(),
 })
+

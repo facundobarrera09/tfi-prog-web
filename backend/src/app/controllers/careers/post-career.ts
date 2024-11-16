@@ -1,6 +1,7 @@
 import { RequestHandler, Router } from 'express'
 import { OpenAPIV3 } from 'openapi-types'
-import { createCareerSchema } from './schemas/careers-schemas'
+import { CreateCareerRequestBody, createCareerSchema } from './schemas/careers-schemas'
+import careersService from '../../services/careers'
 
 const docs: OpenAPIV3.PathsObject = {
     '/': {
@@ -12,7 +13,7 @@ const docs: OpenAPIV3.PathsObject = {
                     "application/json": {
                         "schema": {
                             "type": "object",
-                            "required": ["name", "accredited"],
+                            "required": ["name", "accredited", "levels"],
                             "properties": {
                                 "name": {
                                     "type": "string",
@@ -21,6 +22,12 @@ const docs: OpenAPIV3.PathsObject = {
                                 },
                                 "accredited": {
                                     "type": "boolean"
+                                },
+                                "levels": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
                                 }
                             }
                         } 
@@ -56,10 +63,17 @@ const validateBody: RequestHandler = async (req, res, next) => {
     next()
 }
 
-const requestHandler: RequestHandler = (req, res) => {
-    /** @todo implement */
+const requestHandler: RequestHandler<any, any, CreateCareerRequestBody> = async (req, res) => {
+    const { name, accredited, levels } = req.body
 
-    res.status(404).send()
+    const newCareer = await careersService.createCareer(name, accredited, levels)
+
+    if (!newCareer) {
+        res.status(400).json({ error: "Career already exists" })
+        return
+    }
+
+    res.status(201).json({career: newCareer})
 }
 
 postCareerRouter.post('/',

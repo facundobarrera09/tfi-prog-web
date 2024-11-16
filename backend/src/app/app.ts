@@ -3,6 +3,7 @@ import express from 'express'
 import swaggerUi from 'swagger-ui-express'
 import apiDocs from './controllers/apiDocs.ts'
 import studentsRouter from './controllers/students/index.ts'
+import careersRouter from './controllers/careers/index.ts'
 
 // @ts-ignore
 // Allow for BigInt JSON serialization
@@ -36,5 +37,6 @@ app.use('/api-docs', swaggerUi.serve)
 app.get('/api-docs', swaggerUi.setup(apiDocs))
 
 app.use('/api/students', studentsRouter)
+app.use('/api/careers', careersRouter)
 
 export default app
