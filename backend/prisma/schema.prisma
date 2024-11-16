@@ -35,6 +35,7 @@ model StudentHasCareer {
     career        Career   @relation("StudentHasCareerToCareer", fields: [careerId], references: [id])
     studentId     Int
     careerId      Int
+    deleted       Boolean  @default(false)
 
     @@index([id])
 }

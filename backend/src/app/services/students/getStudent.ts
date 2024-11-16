@@ -16,6 +16,9 @@ const getStudent = (id: number) => {
             dni: true,
             email: true,
             careers: {
+                where: {
+                    deleted: false
+                },
                 select: {
                     enrolmentDate: true,
                     career: {
