@@ -15,6 +15,12 @@ const deleteCareer = async (id: number) => {
                             where: { deleted: false },
                             data: { deleted: true }
                         }
+                    },
+                    students: {
+                        updateMany: {
+                            where: { deleted: false },
+                            data: { deleted: true }
+                        }
                     }
                 }
             }
