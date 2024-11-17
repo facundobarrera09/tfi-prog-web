@@ -4,11 +4,11 @@ import { CreateLevel } from "../../models/level"
 const prisma = new PrismaClient()
 
 const createCareer = async (name: string, accredited: boolean, levels: CreateLevel[]) => {
-    console.log('creating career', {
-        name,
-        accredited,
-        levels
-    })
+    // console.log('creating career', {
+    //     name,
+    //     accredited,
+    //     levels
+    // })
 
     const sameNameCareer = await prisma.$queryRaw<{ id: number }[]>`
         SELECT c.id
@@ -21,7 +21,7 @@ const createCareer = async (name: string, accredited: boolean, levels: CreateLev
         )
     `
 
-    if (sameNameCareer) return null
+    if (sameNameCareer.length === 1) return null
 
     return await prisma.career.create({
         select: {
