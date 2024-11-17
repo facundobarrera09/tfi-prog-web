@@ -24,7 +24,7 @@ const SideNavItem: React.FC<SideNavItemProps> = ({ title, href }) => {
 const SideNav: React.FC = () => {
     return (
         <nav className="w-96 h-screen sticky left-0 top-0 py-8 pl-8 bg-darkturquoise shadow-border">
-            <h1 className="mb-5 text-3xl font-bold">Trabajo Práctico 1</h1>
+            <h1 className="mb-5 text-3xl font-bold">Trabajo Práctico Integrador</h1>
             <ol>
                 <SideNavItem title="Página Principal" href="/" />
                 <SideNavItem title="Alumnos" href="/students" />
