@@ -1,3 +1,5 @@
+import addStudentHasCareer from "./careers/addCareer"
+import deleteStudentHasCareer from "./careers/deleteCareer"
 import createStudent from "./createStudent"
 import deleteStudent from "./deleteStudent"
 import getStudent from "./getStudent"
@@ -7,7 +9,11 @@ const studentsService = {
     getStudents,
     createStudent,
     deleteStudent,
-    getStudent
+    getStudent,
+    careers: {
+        addCareer: addStudentHasCareer,
+        deleteCareer: deleteStudentHasCareer
+    }
 }
 
 export default studentsService

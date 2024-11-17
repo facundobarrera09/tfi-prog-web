@@ -59,6 +59,15 @@ interface GetCareersResponse {
     careers: Career[]
 }
 
+interface PostStudentHasCareerResponse {
+
+}
+
+interface PostStudentHasCareerBody {
+    enrolmentDate: Date,
+    careerId: number
+}
+
 interface Student {
     id: number,
     sid: bigint,
