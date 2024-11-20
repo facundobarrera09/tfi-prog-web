@@ -1,6 +1,6 @@
 import { RequestHandler, Router } from "express"
 import { OpenAPIV3 } from "openapi-types"
-import { DeleteCareerPath, deleteCareerSchema } from "./schemas/careers-schemas"
+import { CareerInPath, careerInPathSchema } from "./schemas/careers-schemas"
 import careersService from "../../services/careers"
 
 
@@ -35,8 +35,8 @@ const docs: OpenAPIV3.PathsObject = {
 
 const deleteCareerRouter = Router()
 
-const validatePath: RequestHandler<DeleteCareerPath> = async (req, res, next) => {
-    const validationResult = deleteCareerSchema.validate(req.params, { abortEarly: false, stripUnknown: true })
+const validatePath: RequestHandler<CareerInPath> = async (req, res, next) => {
+    const validationResult = careerInPathSchema.validate(req.params, { abortEarly: false, stripUnknown: true })
 
     if (validationResult.error) {
         res.status(400).json(validationResult.error)
@@ -48,7 +48,7 @@ const validatePath: RequestHandler<DeleteCareerPath> = async (req, res, next) =>
     next()
 }
 
-const requestHandler: RequestHandler<DeleteCareerPath> = async (req, res) => {
+const requestHandler: RequestHandler<CareerInPath> = async (req, res) => {
     const { id } = req.params
 
     const response = await careersService.deleteCareer(id)

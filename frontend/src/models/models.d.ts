@@ -59,6 +59,10 @@ interface GetCareersResponse {
     careers: Career[]
 }
 
+interface GetCareerResponse {
+    career: Required<Career>
+}
+
 interface PostStudentHasCareerResponse {
 
 }
@@ -80,14 +84,19 @@ interface Student {
 
 interface StudentHasCareer {
     enrolmentDate: Date,
-    career: Pick<Career, 'id' | 'name'>
+    career?: Pick<Career, 'id' | 'name'>
+    student?: Pick<Student, 'id' | 'sid' | 'firstname' | 'lastname'>
 }
 
 interface Career {
     id: number,
     name: string,
     accredited: boolean,
-    levels: Level[]
+    levels: Level[],
+    students?: {
+        enrolmentDate: Date,
+        student: Pick<Student, 'id' | 'sid' | 'firstname' | 'lastname'>
+    }[]
 }
 
 interface Level {

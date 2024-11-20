@@ -2,13 +2,13 @@
 
 import React, { ChangeEventHandler, useEffect, useState } from "react";
 
-interface FilterSelectProps {
-    id: string
+interface FilterSelectProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+    clearAfterSelection?: boolean
     setSelected(newSelection: any): void
     getOptions(value: string): Promise<any[]>
 }
 
-const FilterSelect: React.FC<FilterSelectProps> = ({ id, getOptions, setSelected }) => {
+const FilterSelect: React.FC<FilterSelectProps> = ({ id, placeholder = "", clearAfterSelection = false, getOptions, setSelected, ...props }) => {
     const [options, setOptions] = useState<any[]>([])
     const [optionsComponents, setOptionsComponents] = useState<React.ReactNode[]>([])
 
@@ -75,7 +75,12 @@ const FilterSelect: React.FC<FilterSelectProps> = ({ id, getOptions, setSelected
     useEffect(() => {
         if (selection) {
             setSelected(selection)
-            setCriteria(selection.toString())
+            if (clearAfterSelection) {
+                setCriteria("")
+            }
+            else {
+                setCriteria(selection.toString())
+            }
         }
     }, [selection])
 
@@ -83,10 +88,10 @@ const FilterSelect: React.FC<FilterSelectProps> = ({ id, getOptions, setSelected
         <div className={'relative flex border border-solid border-light-border'}
         >
             <input
-                id={id}
+                {...props}
                 className="w-full px-2 py-0.5 border border-solid border-slate-500 rounded-sm" 
                 type="text" value={criteria}
-                autoComplete="off"
+                autoComplete="off" placeholder={placeholder}
 
                 onInput={(e) => { setSelection(null); setSelected(null); setCriteria(e.currentTarget.value); debounce(e.currentTarget.value) }}
                 onFocus={() => { setInputHovered(true) }}

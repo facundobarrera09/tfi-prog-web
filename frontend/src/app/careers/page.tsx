@@ -125,9 +125,12 @@ const Home = () => {
                     <Cell>{career.levels.length}</Cell>
                     <Cell>{career.accredited ? 'Sí' : 'No'}</Cell>
                     <Cell>
-                        <Button color="customred" href="#" name="Borrar" 
-                            onClick={() => { setCareerToDelete(career); setShowDeleteCareerPopup(true) }}
-                        />
+                        <div className="flex gap-3">
+                            <Button name="Estudiantes" color="darkturquoise" href={`/careers/view/${career.id}`} />
+                            <Button color="customred" href="#" name="Borrar" 
+                                onClick={() => { setCareerToDelete(career); setShowDeleteCareerPopup(true) }}
+                            />
+                        </div>
                     </Cell>
                 </Row>
             )

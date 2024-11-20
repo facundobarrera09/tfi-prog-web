@@ -56,7 +56,7 @@ const Home: React.FC<HomeProps> = ({ params }) => {
 
         const setErrors = (errors: Joi.ValidationError) => {
             errors.details.forEach(error => {
-                // console.log(error)
+                console.log(error)
                 switch(error.path[0]) {
                     case 'career': 
                         switch(error.type) {
@@ -124,6 +124,8 @@ const Home: React.FC<HomeProps> = ({ params }) => {
         
         newTableComponents.push(...careers.map((studentHasCareer, key) => {
             // console.log(studentHasCareer)
+            if (!studentHasCareer.career) throw new Error('An error has occured') 
+
             return (
                 <Row key={key}>
                     <Cell>{studentHasCareer.career.id}</Cell>
@@ -133,8 +135,10 @@ const Home: React.FC<HomeProps> = ({ params }) => {
                         <div className="flex gap-2">
                             <Button name="Eliminar inscripción" 
                                 onClick={() => {
-                                    setCareerToDelete(studentHasCareer.career)
-                                    setShowCareerDeleteConfirmation(true)
+                                    if (studentHasCareer.career) {
+                                        setCareerToDelete(studentHasCareer.career)
+                                        setShowCareerDeleteConfirmation(true)
+                                    }
                                 }}
                             />
                         </div>

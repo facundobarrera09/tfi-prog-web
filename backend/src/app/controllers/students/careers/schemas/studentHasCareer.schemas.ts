@@ -9,7 +9,7 @@ export interface CreateStudentHasCareerSchema {
 export const createStudentHasCareerSchema = Joi.object<CreateStudentHasCareerSchema>().keys({
     studentId: Joi.number().min(1).required(),
     careerId: Joi.number().min(1).required(),
-    enrolmentDate: Joi.date().max(new Date(Date.now() + 1000*3600)).required()
+    enrolmentDate: Joi.date().max("now").required()
 })
 
 export interface DeleteStudentHasCareerSchema {

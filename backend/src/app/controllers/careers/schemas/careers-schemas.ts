@@ -31,10 +31,10 @@ export const getCareersSchema = Joi.object<GetCareersRequestQuery>().keys({
     pageSize: Joi.number().min(5).default(5).optional()
 })
 
-export interface DeleteCareerPath {
+export interface CareerInPath {
     [x:string]: string | number 
     id: number
 }
-export const deleteCareerSchema = Joi.object<DeleteCareerPath>().keys({
+export const careerInPathSchema = Joi.object<CareerInPath>().keys({
     id: Joi.number().required()
 })
