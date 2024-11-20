@@ -9,9 +9,20 @@ const get = async <Response, Query = {[x:string]: any} | undefined> (url: string
             params: query
         })
 
-        return {
-            success: true,
-            data: response.data
+        if (response.status < 300) {
+            return {
+                success: true,
+                data: response.data
+            }
+        }
+        else {
+            return {
+                success: false,
+                error: new Error('An error has occured'),
+                message: "An error has occured",
+                status: response.status,
+                data: response.data
+            }
         }
     }
     catch (error) {
