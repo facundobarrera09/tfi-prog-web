@@ -49,10 +49,51 @@ const docs: OpenAPIV3.PathsObject = {
                                 "properties": {
                                     "students": {
                                         "type": "array",
-                                        "description": "Array with Students",
                                         "items": {
-                                            "type": "string",
-                                            "default": "Students"
+                                            "type": "object",
+                                            "description": "Array with students info",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number"
+                                                },
+                                                "sid": {
+                                                    "type": "number"
+                                                },
+                                                "firstname": {
+                                                    "type": "string"
+                                                },
+                                                "lastname": {
+                                                    "type": "string"
+                                                },
+                                                "dni": {
+                                                    "type": "number"
+                                                },
+                                                "email": {
+                                                    "type": "string"
+                                                },
+                                                "careers": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "enrolmentDate": {
+                                                                "type": "string",
+                                                            },
+                                                            "career": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "name": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     },
                                     "count": {

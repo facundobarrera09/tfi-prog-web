@@ -58,15 +58,20 @@ const docs: OpenAPIV3.PathsObject = {
                                             "pattern": "/[A-Z][a-z]{1,50}}/",
                                             "example": "Information Systems Engineering"
                                         },
+                                        "accredited": {
+                                            "type": "boolean"
+                                        },
                                         "levels": {
                                             "type": "array",
                                             "items": {
-                                                "type": "string"
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    }
+                                                }
                                             },
-                                            "example": ["1st year", "2nd year", "3rd year"]
-                                        },
-                                        "accredited": {
-                                            "type": "boolean"
+                                            "example": [{"name": "1st year"}, {"name": "2nd year"}, {"name": "3rd year"}]
                                         }
                                     }
                                 }

@@ -26,7 +26,12 @@ const docs: OpenAPIV3.PathsObject = {
                                 "levels": {
                                     "type": "array",
                                     "items": {
-                                        "type": "string"
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        }
                                     }
                                 }
                             }
