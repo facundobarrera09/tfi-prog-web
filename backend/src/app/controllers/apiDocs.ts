@@ -8,7 +8,7 @@ const apiDocs: OpenAPIV3.Document = {
     "openapi": "3.0.0",
     "info": {
         "title": "TFI - Backend documentation",
-        "description": "Educational institution dministration system",
+        "description": "Educational institution administration system",
         "version": "1.0.0",
     },
     "paths": {},
