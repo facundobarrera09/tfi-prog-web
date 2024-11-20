@@ -11,7 +11,7 @@ const createCareer = async (name: string, accredited: boolean, levels: CreateLev
     // })
 
     const sameNameCareer = await prisma.$queryRaw<{ id: number }[]>`
-        SELECT c.id
+        SELECT c.id, c.name
         FROM "Career" c
         WHERE 
         (
@@ -21,7 +21,7 @@ const createCareer = async (name: string, accredited: boolean, levels: CreateLev
         )
     `
 
-    if (sameNameCareer.length === 1) return null
+    if (sameNameCareer.length >= 1) return null
 
     return await prisma.career.create({
         select: {
