@@ -27,7 +27,10 @@ const Home: React.FC<HomeProps> = ({ params }) => {
     const [showConfirmationPopup, setShowConfirmationPopup] = useState(false)
 
     const [showStudentNotFoundPopup, setShowStudentNotFoundPopup] = useState(false)
-    const [showDeleteConfirmationPopup, setShowDeleteConfirmationPopup] = useState(false)
+
+    const [careerToDelete, setCareerToDelete] = useState<Pick<Career, 'id' | 'name'> | null>(null)
+    const [showCareerDeleteConfirmation, setShowCareerDeleteConfirmation] = useState(false)
+    const [showCareerDeleted, setShowCareerDeleted] = useState(false)
 
     const [showAddStudentHasCareer, setShowAddStudentHasCareer] = useState(false)
     const [newCareer, setNewCareer] = useState<Career | null>(null)
@@ -95,15 +98,15 @@ const Home: React.FC<HomeProps> = ({ params }) => {
         }
     }
 
-    const handleRemoveCareer = async (careerId: number) => {
-        if (!student || !careerId) {
+    const handleRemoveCareer = async () => {
+        if (!student || !careerToDelete) {
             return
         }
 
-        const response = await studentsService.careers.deleteCareer(student.id, careerId)
+        const response = await studentsService.careers.deleteCareer(student.id, careerToDelete.id)
 
         if (response.success) {
-            setShowDeleteConfirmationPopup(true)
+            setShowCareerDeleted(true)
         }
 
         fetchData()
@@ -130,7 +133,8 @@ const Home: React.FC<HomeProps> = ({ params }) => {
                         <div className="flex gap-2">
                             <Button name="Eliminar inscripción" 
                                 onClick={() => {
-                                    handleRemoveCareer(studentHasCareer.career.id)
+                                    setCareerToDelete(studentHasCareer.career)
+                                    setShowCareerDeleteConfirmation(true)
                                 }}
                             />
                         </div>
@@ -190,14 +194,32 @@ const Home: React.FC<HomeProps> = ({ params }) => {
                 </div>
             </Overlay>
 
-            <Overlay active={showDeleteConfirmationPopup}>
+            <Overlay active={showCareerDeleteConfirmation}>
+                <div className="w-full h-full flex justify-center items-center">
+                    <div className="flex flex-col items-center gap-3 bg-white px-8 py-4 shadow-card rounded-sm">
+                        <div className="flex items-center text-xl">
+                            <span >¿Está seguro de que desea desinscribir a&nbsp;</span>
+                            <span className="font-bold">{`${student?.firstname} ${student?.lastname}` || 'alumno'}</span>
+                            <span >&nbsp;de&nbsp;</span>
+                            <span className="font-bold">{careerToDelete?.name || 'carrera'}</span>
+                            <span>?</span>
+                        </div>
+                        <div className="flex gap-3">
+                            <Button name="Eliminar" onClick={() => { handleRemoveCareer(); setShowCareerDeleteConfirmation(false) }} />
+                            <Button name="Cancelar" color="darkturquoise" onClick={() => { setShowCareerDeleteConfirmation(false) }} />
+                        </div>
+                    </div>
+                </div>
+            </Overlay>
+
+            <Overlay active={showCareerDeleted}>
                 <div className="w-full h-full flex justify-center items-center">
                     <div className="flex flex-col items-center gap-3 bg-white px-8 py-4 shadow-card rounded-sm">
                         <div className="flex flex-col items-center">
                             <span className="text-xl font-bold">Se ha eliminado la inscripción con éxito</span>
                         </div>
                         <div className="flex gap-3">
-                            <Button name="Listo" color="darkturquoise" onClick={() => { setShowDeleteConfirmationPopup(false) }} />
+                            <Button name="Listo" color="darkturquoise" onClick={() => { setShowCareerDeleted(false) }} />
                         </div>
                     </div>
                 </div>
